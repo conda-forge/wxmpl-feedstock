@@ -10,23 +10,25 @@ source:
   sha256: 63885c7f8728770bea73aeaf18ae11ca5afd39e29d637305ed5b5e0750ce57bc
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
     - setuptools
 
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - numpy
     - wxpython
     - matplotlib-base
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - wxmpl
 
